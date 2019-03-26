@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<tr>
+    <td>title</td>
+    <td>description</td>
+    <td>director</td>
+    <td>year</td>
+    <td>picture</td>
+    <td>user</td>
+    <td>genre</td>
+    <td>date</td>
+</tr>
+
+<tr th:each="movie : ${movies}">
+    <td th:text="${movie.title}"></td>
+    <td th:text="${movie.description}"></td>
+    <td th:text="${movie.director}"></td>
+    <td th:text="${movie.year}"></td>
+    <td><img th:src="@{/getImage(picUrl=${movie.picUrl})}" width="50"></td>
+    <td th:text="${movie.user.name}"></td>
+    <td th:text="${genre.name}"></td>
+    <td th:text="${movie.date}"></td>
+
+
+</tr>
+</table>
+<tr>
+    <td>title</td>
+    <td>description</td>
+    <td>director</td>
+    <td>year</td>
+    <td>picture</td>
+    <td>user</td>
+    <td>genre</td>
+    <td>date</td>
+</tr>
+
+<tr th:each="movie : ${movies}">
+    <td><a th:href="@{/currentMovie(id=${movie.id})}" th:text="${movie.title}"></a></td>
+    <td th:text="${movie.description}"></td>
+    <td th:text="${movie.director}"></td>
+    <td th:text="${movie.year}"></td>
+    <td><img th:src="@{/getImage(picUrl=${movie.picUrl})}" width="50"></td>
+    <td th:text="${movie.user.name}"></td>
+    <td><span th:each="genre:${movie.getGenres()}"><a
+            th:href="@{/moviesByGenre(id=${genre.id})}" th:text="${genre.name}"></a> </span></td>
+    <td th:text="${movie.date}"></td>
+
+
+</tr>
+</table>
+</body>
+</html>

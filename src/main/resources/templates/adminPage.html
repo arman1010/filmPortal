@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <a href="/addMovie">AddMovie</a> | <a href="/addGenre">Add Genres</a>
+
+
+<table border="1">
+    <tr>
+        <td>Name</td>
+        <td>Delete</td>
+    </tr>
+    <tr th:each="genre : ${genres}">
+        <td th:text="${genre.name}"></td>
+        <td><a th:href="@{/deleteGenre(id=${genre.id})}">Delete</a></td>
+    </tr>
+
+</table>
+
+
+<table border="1">
+    <tr>
+
+        <td>Title</td>
+        <td>Description</td>
+        <td>Director</td>
+        <td>Year</td>
+        <td>User</td>
+        <td>Image</td>
+        <td>Date</td>
+        <td>Delete</td>
+
+    </tr>
+    <tr th:each="movie : ${movies}">
+        <td th:text="${movie.title}"></td>
+        <td th:text="${movie.description}"></td>
+        <td th:text="${movie.director}"></td>
+        <td th:text="${movie.year}"></td>
+        <td th:text="${movie.user.name}"></td>
+        <td><img th:src="@{/getImage(picUrl=${movie.picUrl})}" width="50"></td>
+        <td th:text="${movie.date}"></td>
+        <td><a th:href="@{/deleteMovie(id=${movie.id})}">Delete</a></td>
+
+</table>
+
+</body>
+</html>

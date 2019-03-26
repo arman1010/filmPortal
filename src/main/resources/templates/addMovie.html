@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="/addMovie" method="post" enctype="multipart/form-data">
+    Title: <input type="text" name="title" placeholder="title"><br>
+    Description: <input type="text" name="description" placeholder="description"><br>
+    Director: <input type="text" name="Director" placeholder="Director"><br>
+    Year: <input type="number" name="year" placeholder="year"><br>
+    <input type="checkbox" name="genres" th:each="genre:${genres}" th:text="${genre.name}" th:value="${genre.id}"><br>
+    Image: <input type="file" name="picture">
+    <input type="submit" value="Add Movie">
+</form>
+
+</body>
+</html>
